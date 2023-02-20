@@ -1,4 +1,4 @@
 #!/bin/sh
 
-docker-compose -f $INPUT_TYPE/docker-compose.yml up -d $INPUT_SERVICE
+docker-compose -f cp-all-in-one/docker-compose.yml up -d cp-all-ine-one
 sleep 20

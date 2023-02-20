@@ -1,10 +1,3 @@
-FROM tiangolo/docker-with-compose
-
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
-
 FROM centos:7
 
 VOLUME /opt/sc
@@ -25,10 +18,9 @@ RUN yum -y update \
  && tar xzf s6-overlay-amd64.tar.gz -C /usr ./bin \
  && yum -y clean all
 
-EXPOSE 443
+FROM tiangolo/docker-with-compose
 
-RUN useradd tns
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-COPY container-files /
-
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/entrypoint.sh"]
